@@ -90,4 +90,4 @@ var GAME = (function() {
   return api;
 }())
 
-GAME.nextStep();
+GAME.nextStep(undefined, true);
