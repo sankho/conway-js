@@ -2,10 +2,14 @@
 
 var GAME = (function() {
 
+
   var api = {};
+
 
   // private vars & constants
   var STEP_TIMEOUT = 750;
+
+
 
   /**
    * Inits the app or takes a provided state object and iterates to the next step.
@@ -28,6 +32,8 @@ var GAME = (function() {
     }
   }
 
+
+
   /**
    * Draws a table into the DOM based on the provided 
    * state array
@@ -39,16 +45,21 @@ var GAME = (function() {
 
   }
 
+
+
   /**
    * Prepares a brand new double sided array to be the state used for
    * the next step
    *
    * @param {Array} state Previous state object
    * @returns {Array} Double sided array of objects; the state for the next step
+   * @public
    */
   api.prepareNextStep = function(state) {
 
   }
+
+
 
   /**
    * Determines whether a cell lives or die. Crux of the
@@ -63,31 +74,47 @@ var GAME = (function() {
     
   }
 
+
+
   /**
    * Makes the initial double sided array of objects
    * representing each column
-   * Expects that the return array[3][5].on == true
    *
+   * @param {Number} size Represents the number of rows to be printed, uses this for columns as well
    * @public
    */
   api.makeInitialState = function() {
-    var initialState = [];
+    return this.makeEmptyState(10);
+  }
 
-    for (var i = 0; i < 10; i++) {
+
+
+  /**
+   * Makes an empty double sided array to be used
+   * 
+   * @param  {Number} size Length of rows & columns
+   * @public
+   */
+  api.makeEmptyState = function(size) {
+    var emptyState = [];
+
+    for (var i = 0; i < size; i++) {
       var row = [];
-      for (var j = 0; j < 10; j++) {
+      for (var j = 0; j < size; j++) {
         row.push({
           on: false
         });
       }
-      initialState.push(row);
+      emptyState.push(row);
     }
 
-    initialState[3][5].on = true;
-    return initialState;
+    return emptyState;
   }
 
+
   return api;
+
+
 }())
 
 GAME.nextStep(undefined, true);
