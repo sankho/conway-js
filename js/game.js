@@ -75,6 +75,19 @@ var GAME = (function() {
   }
 
 
+  /**
+   * Returns an array of the neighbors surrounding the
+   * cell
+   * 
+   * @param  {Array} state  Double sided array
+   * @param  {Number} row    Index of the row
+   * @param  {Number} column Index of column
+   * @return {Array} 8 objects representing each surrounding cell
+   */
+  api.getCellNeighbors = function(state, row, column) {
+
+  }
+
 
   /**
    * Makes the initial double sided array of objects
