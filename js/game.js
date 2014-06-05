@@ -4,29 +4,27 @@ var GAME = (function() {
 
   var api = {};
 
-  // private vars
-  var _currentState,
-      _nextState,
-      _step_timeout = 750;
+  // private vars & constants
+  var STEP_TIMEOUT = 750;
 
   /**
    * Inits the app or takes a provided state object and iterates to the next step.
    * Called recursively unless second parameter passed as true.
-   * 
+   *
+   * @param {Array} state Double sided array
+   * @param {Boolean} dontRecurse If true, won't trigger the next step after this one
    * @public
    */
   api.nextStep = function(state, dontRecurse) {
-    _currentState = state || api.makeInitialState();
+    state = state || api.makeInitialState();
 
-    console.log(_currentState);
-    
-    api.drawTableBasedOnState(_currentState);
-    _nextState = api.prepareNextStep(_currentState);
+    api.drawTableBasedOnState(state);
+    var nextState = api.prepareNextStep(state);
 
     if (!dontRecurse) {
       setTimeout(function() {
-        api.init(_nextState);
-      }, _step_timeout);
+        api.init(nextState);
+      }, STEP_TIMEOUT);
     }
   }
 
@@ -50,6 +48,19 @@ var GAME = (function() {
    */
   api.prepareNextStep = function(state) {
 
+  }
+
+  /**
+   * Determines whether a cell lives or die. Crux of the
+   * app.
+   * 
+   * @param  {Array} state  Double sided array
+   * @param  {Number} row    Index of the row
+   * @param  {Number} column Index of column
+   * @return {Boolean} Does it live or die?
+   */
+  api.determineCellDestiny = function(state, row, column) {
+    
   }
 
   /**
