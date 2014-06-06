@@ -85,6 +85,10 @@ var GAME = (function() {
     if (isCellAlive) {
       if (livingCount < 2) {
         return false;
+      } else if (livingCount < 4) {
+        return  true;
+      } else {
+        return false;
       }
     }
   }
