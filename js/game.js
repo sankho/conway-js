@@ -48,7 +48,7 @@ var GAME = (function() {
       var row = state[i];
       html += '<div class="row">';
 
-      for (var j = 0; j < state.length; j++) {
+      for (var j = 0; j < row.length; j++) {
         var col = row[j];
 
         if (col.on) {
