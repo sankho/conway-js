@@ -7,7 +7,7 @@ var GAME = (function() {
 
 
   // private vars & constants
-  var STEP_TIMEOUT = 750;
+  var STEP_TIMEOUT = 15;
 
 
 
@@ -164,7 +164,7 @@ var GAME = (function() {
    * @public
    */
   api.makeInitialState = function() {
-    var state = this.makeEmptyState(20);
+    var state = this.makeEmptyState(50);
 
     state[5][7].on = true;
     state[7][7].on = true;
@@ -173,6 +173,14 @@ var GAME = (function() {
     state[7][10].on = true;
     state[7][11].on = true;
     state[7][12].on = true;
+
+    state[25][27].on = true;
+    state[27][27].on = true;
+    state[27][26].on = true;
+    state[26][29].on = true;
+    state[27][30].on = true;
+    state[27][31].on = true;
+    state[27][32].on = true;
 
     return state;
   }
