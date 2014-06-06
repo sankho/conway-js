@@ -27,7 +27,7 @@ var GAME = (function() {
 
     if (!dontRecurse) {
       setTimeout(function() {
-        api.init(nextState);
+        api.nextStep(nextState);
       }, STEP_TIMEOUT);
     }
   }
@@ -75,7 +75,21 @@ var GAME = (function() {
    * @public
    */
   api.prepareNextStep = function(state) {
+    var newState = api.makeEmptyState(state.length);
 
+    for (var i = 0; i < state.length; i++) {
+      var row = state[i];
+      for (var j = 0; j < row.length; j++) {
+        var col = row[j];
+
+        newState[i][j] = {
+          on: this.determineCellDestiny(state, i, j),
+          id: col.id
+        };
+      }
+    }
+
+    return newState;
   }
 
 
@@ -202,4 +216,4 @@ var GAME = (function() {
 
 }())
 
-GAME.nextStep(undefined, true);
+GAME.nextStep(undefined);
