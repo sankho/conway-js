@@ -90,6 +90,10 @@ var GAME = (function() {
       } else {
         return false;
       }
+    } else {
+      if (livingCount === 3) {
+        return true;
+      }
     }
   }
 
