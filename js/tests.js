@@ -30,6 +30,20 @@ state[10][9].on  = true;
 state[9][9].on   = true;
 state[11][11].on = true;
 
+test("Get cell neighbors", function() {
+  var neighbors = GAME.getCellNeighbors(state, 3, 5);
+
+  ok(typeof neighbors == 'Object', "GAME.getCellNeighbors not returning an object");
+
+  ok(neighbors[0].id === state[2][4].id, "expects to get neighbors starting from the top left, going clockwise and around our desired cell, got something else");
+  ok(neighbors[1].id === state[2][5].id, "expects to get neighbors starting from the top left, going clockwise and around our desired cell, got something else");
+  ok(neighbors[2].id === state[2][6].id, "expects to get neighbors starting from the top left, going clockwise and around our desired cell, got something else");
+  ok(neighbors[3].id === state[3][6].id, "expects to get neighbors starting from the top left, going clockwise and around our desired cell, got something else");
+  ok(neighbors[4].id === state[4][6].id, "expects to get neighbors starting from the top left, going clockwise and around our desired cell, got something else");
+  ok(neighbors[5].id === state[4][5].id, "expects to get neighbors starting from the top left, going clockwise and around our desired cell, got something else");
+  ok(neighbors[6].id === state[4][4].id, "expects to get neighbors starting from the top left, going clockwise and around our desired cell, got something else");
+  ok(neighbors[7].id === state[3][4].id, "expects to get neighbors starting from the top left, going clockwise and around our desired cell, got something else");
+})
 
 test("initial test", function() {
   var stayAlive = GAME.determineCellDestiny(state, 3, 5);
