@@ -213,6 +213,79 @@ var GAME = (function() {
   }
 
 
+
+  /**
+   * Returns a few different states for example purposes
+   *
+   * @param {Number} option Chooses which state array to return
+   * @return {Array} state array
+   * @public
+   */
+  api.getExampleState = function(option) {
+    var state = api.makeEmptyState(50);
+
+    if (option === 0) {
+      state[15][15].on = true;
+      state[15][16].on = true;
+      state[16][15].on = true;
+      state[16][16].on = true;
+
+      state[15][24].on = true;
+      state[16][24].on = true;
+      state[17][24].on = true;
+
+      state[14][25].on = true;
+      state[18][25].on = true;
+
+      state[13][26].on = true;
+      state[19][26].on = true;
+      state[13][27].on = true;
+      state[19][27].on = true;
+
+      state[16][28].on = true;
+
+      state[14][29].on = true;
+      state[18][29].on = true;
+
+      state[15][30].on = true;
+      state[16][30].on = true;
+      state[17][30].on = true;
+
+      state[16][31].on = true;
+
+      state[13][34].on = true;
+      state[14][34].on = true;
+      state[15][34].on = true;
+      state[13][35].on = true;
+      state[14][35].on = true;
+      state[15][35].on = true;
+
+      state[12][36].on = true;
+      state[16][36].on = true;
+
+      state[11][38].on = true;
+      state[12][38].on = true;
+      state[16][38].on = true;
+      state[17][38].on = true;
+
+      state[13][48].on = true;
+      state[14][48].on = true;
+      state[13][49].on = true;
+      state[14][49].on = true;
+    } else if (option === 1) {
+
+      // random      
+      for (var i = 0; i < 50; i++) {
+        for (var j = 0; j < 50; j++) {
+          state[i][j].on = Math.random() < 0.5
+        }
+      }
+    }
+
+    return state;
+  }
+
+
   return api;
 
 
