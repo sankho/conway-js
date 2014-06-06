@@ -42,7 +42,26 @@ var GAME = (function() {
    * @public
    */
   api.drawTableBasedOnState = function(state) {
+    var html = '';
 
+    for (var i = 0; i < state.length; i++) {
+      var row = state[i];
+      html += '<div class="row">';
+
+      for (var j = 0; j < state.length; j++) {
+        var col = row[j];
+
+        if (col.on) {
+          html += '<div class="cell on"></div>';
+        } else {
+          html += '<div class="cell"></div>';
+        }
+      }
+
+      html += '</div>';
+    }
+
+    document.getElementById('table').innerHTML = html;
   }
 
 
