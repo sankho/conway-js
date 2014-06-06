@@ -164,21 +164,15 @@ var GAME = (function() {
    * @public
    */
   api.makeInitialState = function() {
-    var state = this.makeEmptyState(10);
+    var state = this.makeEmptyState(20);
 
-    state[0][0].on = true;
-
-    state[0][2].on = true;
-    state[1][2].on = true;
-
-    state[3][5].on = true;
-    state[3][4].on = true;
-    state[2][5].on = true;
-
-    state[9][9].on = false;
-    state[8][9].on = true;
-    state[8][8].on = true;
-    state[9][8].on = true;
+    state[5][7].on = true;
+    state[7][7].on = true;
+    state[7][6].on = true;
+    state[6][9].on = true;
+    state[7][10].on = true;
+    state[7][11].on = true;
+    state[7][12].on = true;
 
     return state;
   }
