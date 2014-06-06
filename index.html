@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Conway's Game o Life</title>
+
+    <style>
+      #table {
+        border: 1px solid #e1e1e1;
+        border-bottom: 0 none;
+        width: auto;
+        display: inline-block;
+      }
+
+      .cell {
+        width: 5px;
+        height: 5px;
+        border: 1px solid #e1e1e1;
+        transition: 350ms linear all;
+        float: left;
+        border-right: 0 none;
+      }
+
+      .cell:first-child {
+        border-left: 0 none;
+      }
+
+      .cell.on {
+        background: #999;
+      }
+
+      .row {
+        margin-top: -1px;
+        overflow: hidden;
+      }
+    </style>
+
+  </head>
+  <body>
+
+    <div id="table">
+
+    </div>
+
+    <script src="js/game.js"></script>
+    <script>
+      GAME.nextStep();
+    </script>
+  </body>
+</html>
