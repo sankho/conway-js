@@ -109,13 +109,16 @@ var GAME = (function() {
    * @public
    */
   api.makeEmptyState = function(size) {
-    var emptyState = [];
+    var emptyState = [],
+        idCounter  = 0;
 
     for (var i = 0; i < size; i++) {
       var row = [];
       for (var j = 0; j < size; j++) {
+        idCounter++;
         row.push({
-          on: false
+          on: false,
+          id: idCounter
         });
       }
       emptyState.push(row);
