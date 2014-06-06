@@ -215,5 +215,3 @@ var GAME = (function() {
 
 
 }())
-
-GAME.nextStep(undefined);
