@@ -30,7 +30,7 @@ state[10][9].on  = true;
 state[9][9].on   = true;
 state[11][11].on = true;
 
-test("Get cell neighbors", function() {
+test("Game.getCellNeighbors should return the neighbors of a cell starting form the top left, going clockwise", function() {
   var neighbors = GAME.getCellNeighbors(state, 3, 5);
 
   ok(typeof neighbors == 'Object', "GAME.getCellNeighbors not returning an object");
@@ -43,7 +43,27 @@ test("Get cell neighbors", function() {
   ok(neighbors[5].id === state[4][5].id, "expects to get neighbors starting from the top left, going clockwise and around our desired cell, got something else");
   ok(neighbors[6].id === state[4][4].id, "expects to get neighbors starting from the top left, going clockwise and around our desired cell, got something else");
   ok(neighbors[7].id === state[3][4].id, "expects to get neighbors starting from the top left, going clockwise and around our desired cell, got something else");
-})
+});
+
+test("Conway Rule #1 - If cell is alive with less than two live neighbors, cell dies", function() {
+
+
+});
+
+test("Conway Rule #2 - If cell is alive with two or three live neighbors, cell remains", function() {
+
+
+});
+
+test("Conway Rule #3 - If cell is alive with more than three live neighbors, cell dies", function() {
+
+
+});
+
+test("Conway Rule #4 - If cell is dead with three live neighbors, cell comes alive", function() {
+
+
+});
 
 test("initial test", function() {
   var stayAlive = GAME.determineCellDestiny(state, 3, 5);
