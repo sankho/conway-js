@@ -46,23 +46,35 @@ test("Game.getCellNeighbors should return the neighbors of a cell starting form 
 });
 
 test("Conway Rule #1 - If cell is alive with less than two live neighbors, cell dies", function() {
+  var stayAlive = GAME.determineCellDestiny(state, 0, 0);
 
+  ok(stayAlive === false, "Failed on check for cell [0][0]")
 
+  var stayAlive = GAME.determineCellDestiny(state, 0, 2);
+
+  ok(stayAlive === false, "Failed on check for cell [0][2]")
 });
 
 test("Conway Rule #2 - If cell is alive with two or three live neighbors, cell remains", function() {
+  var stayAlive = GAME.determineCellDestiny(state, 3, 5);
 
+  ok(stayAlive === false, "Failed on check for cell [3][5]")
 
+  var stayAlive = GAME.determineCellDestiny(state, 50, 5);
+
+  ok(stayAlive === false, "Failed on check for cell [50][5]")
 });
 
 test("Conway Rule #3 - If cell is alive with more than three live neighbors, cell dies", function() {
+  var stayAlive = GAME.determineCellDestiny(state, 30, 5);
 
-
+  ok(stayAlive === false, "Failed on check for cell [30][5]")
 });
 
 test("Conway Rule #4 - If cell is dead with three live neighbors, cell comes alive", function() {
+  var stayAlive = GAME.determineCellDestiny(state, 10, 10);
 
-
+  ok(stayAlive === false, "Failed on check for cell [10][10]")
 });
 
 test("initial test", function() {
