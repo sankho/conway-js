@@ -85,7 +85,9 @@ var GAME = (function() {
    * @return {Array} 8 objects representing each surrounding cell
    */
   api.getCellNeighbors = function(state, row, column) {
+    var neighbors = [];
 
+    return neighbors;
   }
 
 

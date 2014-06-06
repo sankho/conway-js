@@ -33,52 +33,46 @@ state[11][11].on = true;
 test("Game.getCellNeighbors should return the neighbors of a cell starting form the top left, going clockwise", function() {
   var neighbors = GAME.getCellNeighbors(state, 3, 5);
 
-  ok(typeof neighbors == 'Object', "GAME.getCellNeighbors not returning an object");
+  ok(typeof neighbors == 'object', "GAME.getCellNeighbors returning an array");
 
-  ok(neighbors[0].id === state[2][4].id, "expects to get neighbors starting from the top left, going clockwise and around our desired cell, got something else");
-  ok(neighbors[1].id === state[2][5].id, "expects to get neighbors starting from the top left, going clockwise and around our desired cell, got something else");
-  ok(neighbors[2].id === state[2][6].id, "expects to get neighbors starting from the top left, going clockwise and around our desired cell, got something else");
-  ok(neighbors[3].id === state[3][6].id, "expects to get neighbors starting from the top left, going clockwise and around our desired cell, got something else");
-  ok(neighbors[4].id === state[4][6].id, "expects to get neighbors starting from the top left, going clockwise and around our desired cell, got something else");
-  ok(neighbors[5].id === state[4][5].id, "expects to get neighbors starting from the top left, going clockwise and around our desired cell, got something else");
-  ok(neighbors[6].id === state[4][4].id, "expects to get neighbors starting from the top left, going clockwise and around our desired cell, got something else");
-  ok(neighbors[7].id === state[3][4].id, "expects to get neighbors starting from the top left, going clockwise and around our desired cell, got something else");
+  ok(neighbors[0].id === state[2][4].id, "first object is top left item");
+  ok(neighbors[1].id === state[2][5].id, "second object is immediately above");
+  ok(neighbors[2].id === state[2][6].id, "third object is cell to top right");
+  ok(neighbors[3].id === state[3][6].id, "fourth object is cell to immediate right");
+  ok(neighbors[4].id === state[4][6].id, "fifth object is cell to bottom right");
+  ok(neighbors[5].id === state[4][5].id, "sixth object is cell immediately below");
+  ok(neighbors[6].id === state[4][4].id, "seventh object is cell to bottom left");
+  ok(neighbors[7].id === state[3][4].id, "eigth & final object is cell to immediate left");
 });
 
 test("Conway Rule #1 - If cell is alive with less than two live neighbors, cell dies", function() {
   var stayAlive = GAME.determineCellDestiny(state, 0, 0);
 
-  ok(stayAlive === false, "Failed on check for cell [0][0]")
+  ok(stayAlive === false, "Check for cell [0][0]")
 
   var stayAlive = GAME.determineCellDestiny(state, 0, 2);
 
-  ok(stayAlive === false, "Failed on check for cell [0][2]")
+  ok(stayAlive === false, "Check for cell [0][2]")
 });
 
 test("Conway Rule #2 - If cell is alive with two or three live neighbors, cell remains", function() {
   var stayAlive = GAME.determineCellDestiny(state, 3, 5);
 
-  ok(stayAlive === false, "Failed on check for cell [3][5]")
+  ok(stayAlive === false, "Check for cell [3][5]")
 
   var stayAlive = GAME.determineCellDestiny(state, 50, 5);
 
-  ok(stayAlive === false, "Failed on check for cell [50][5]")
+  ok(stayAlive === false, "Check for cell [50][5]")
 });
 
 test("Conway Rule #3 - If cell is alive with more than three live neighbors, cell dies", function() {
   var stayAlive = GAME.determineCellDestiny(state, 30, 5);
 
-  ok(stayAlive === false, "Failed on check for cell [30][5]")
+  ok(stayAlive === false, "Check for cell [30][5]")
 });
 
 test("Conway Rule #4 - If cell is dead with three live neighbors, cell comes alive", function() {
   var stayAlive = GAME.determineCellDestiny(state, 10, 10);
 
-  ok(stayAlive === false, "Failed on check for cell [10][10]")
-});
-
-test("initial test", function() {
-  var stayAlive = GAME.determineCellDestiny(state, 3, 5);
-
-  ok(stayAlive === false, "Passed!");
+  ok(stayAlive === false, "Check for cell [10][10]")
 });
