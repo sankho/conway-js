@@ -150,7 +150,25 @@ var GAME = (function() {
    * @public
    */
   api.makeInitialState = function() {
-    return this.makeEmptyState(10);
+    var state = this.makeEmptyState(10);
+
+    state[0][0].on = true;
+
+    state[0][2].on = true;
+    state[1][2].on = true;
+
+    // live with 2-3 neighbors, stays alive - [3][5], [50][5]
+    state[3][5].on = true;
+    state[3][4].on = true;
+    state[2][5].on = true;
+
+    // dead with 3 neighbors, lives - [10][10]
+    state[9][9].on = false;
+    state[8][9].on = true;
+    state[8][8].on = true;
+    state[9][8].on = true;
+
+    return state;
   }
 
 
