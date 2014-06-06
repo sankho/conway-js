@@ -77,7 +77,7 @@ var GAME = (function() {
         livingCount = 0;
 
     for (var i = 0; i < neighbors.length; i++) {
-      if (neighbors[i].on) {
+      if (neighbors[i] && neighbors[i].on) {
         livingCount++;
       }
     }
@@ -101,13 +101,13 @@ var GAME = (function() {
    */
   api.getCellNeighbors = function(state, row, column) {
     var neighbors = [
-      state[row-1][column-1],
-      state[row-1][column],
-      state[row-1][column+1],
+      row > 0 && column > 0 ? state[row-1][column-1] : undefined,
+      row > 0 ? state[row-1][column] : undefined,
+      row > 0 ? state[row-1][column+1] : undefined,
       state[row][column+1],
-      state[row+1][column+1],
-      state[row+1][column],
-      state[row+1][column-1],
+      row + 1 < state.length ? state[row+1][column+1] : undefined,
+      row + 1 < state.length ? state[row+1][column] : undefined,
+      row + 1 < state.length ? state[row+1][column-1] : undefined,
       state[row][column-1]
     ];
 
