@@ -71,7 +71,22 @@ var GAME = (function() {
    * @return {Boolean} Does it live or die?
    */
   api.determineCellDestiny = function(state, row, column) {
-    
+    var neighbors   = api.getCellNeighbors(state, row, column),
+        cell        = state[row][column],
+        isCellAlive = cell.on,
+        livingCount = 0;
+
+    for (var i = 0; i < neighbors.length; i++) {
+      if (neighbors[i].on) {
+        livingCount++;
+      }
+    }
+
+    if (isCellAlive) {
+      if (livingCount < 2) {
+        return false;
+      }
+    }
   }
 
 
